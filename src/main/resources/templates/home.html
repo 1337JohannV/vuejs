@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title> Fibonacci calc</title>
+    <link rel="stylesheet" href="../static/main.css">
+
+
+</head>
+<body>
+
+
+
+<div id="root">
+
+    <form>
+        <input type="number" id="value"  min="1" step="1">
+    </form>
+    <button id="submit" v-on:click="post">Submit</button> <br>
+    <p id="answer">{{message}}</p>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue">
+</script>
+<script>
+    var app = new Vue({
+        el:"#root",
+        data:{message :""},
+        methods:{
+            post: function(){
+
+                var input = document.getElementById("value").value;
+                var url ="http://localhost:8080/calc";
+
+                return fetch(url, {
+                    method: "POST", // *GET, POST, PUT, DELETE, etc.
+                    headers: {
+                        "Content-Type": "text/plain"
+                    },
+
+                    body: String(input)
+                })
+                    .then(response => response.text().then(function (text) {
+                        console.log(text);
+
+                    this.message = String(text);
+
+                }));
+
+
+
+            }
+
+        }
+    })
+
+</script>
+
+
+</body>
+</html>

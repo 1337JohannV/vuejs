@@ -12,8 +12,5 @@ public class Controller {
         return "home";
     }
 
-    @RequestMapping("/error")
-    public String error() {
-        return "err";
-    }
+
 }

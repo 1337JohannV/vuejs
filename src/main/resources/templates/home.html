@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title> Fibonacci calc</title>
-    <link rel="stylesheet" href="../static/main.css">
+    <link rel="stylesheet" href="https://raw.githack.com/1337JohannV/vuejs/master/src/main/resources/static/main.css">
 
 
 </head>
 <body>
-
+<h1 id="welcome"> Fibonacci sequence element finder</h1>
 
 
 <div id="root">
@@ -16,10 +16,13 @@
     <form>
         <input type="number" id="value"  min="1" step="1">
     </form>
-    <button id="submit" v-on:click="post">Submit</button> <br>
-    <p id="answer">{{message}}</p>
+    <button id="submit" class="button6" v-on:click="post"><a>Submit</a></button> <br>
+    <p id="answer">Value of the number is: {{mssg}}</p>
+
+
 
 </div>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/vue">
@@ -27,12 +30,13 @@
 <script>
     var app = new Vue({
         el:"#root",
-        data:{message :""},
+        data:{mssg :""},
         methods:{
             post: function(){
 
                 var input = document.getElementById("value").value;
                 var url ="http://localhost:8080/calc";
+                var msg ="";
 
                 return fetch(url, {
                     method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -43,9 +47,8 @@
                     body: String(input)
                 })
                     .then(response => response.text().then(function (text) {
-                        console.log(text);
-
-                    this.message = String(text);
+                    msg = String(text);
+                    app.mssg = msg;
 
                 }));
 

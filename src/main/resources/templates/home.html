@@ -14,7 +14,7 @@
 <div id="root">
 
     <form>
-        <input type="number" id="value"  min="1" step="1" max="60000">
+        <input type="number" id="value"  min="1" step="1" max="60000" pattern="^[0-9]*$">
     </form>
     <button id="submit" class="button6" v-on:click="post"><a>Submit</a></button> <br>
     <p id="answer">Value of the number is: {{mssg}}</p>
@@ -35,6 +35,8 @@
             post: function(){
 
                 var input = document.getElementById("value").value;
+                var isnum = /^\d+$/.test(input);
+                if(isnum){
                 var url ="http://localhost:8080/calc";
                 var msg ="";
 
@@ -54,9 +56,11 @@
 
 
 
-            }
+            } else {
+                    alert("Enter a valid number!")
+                }
 
-        }
+        }}
     })
 
 </script>

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
@@ -17,10 +19,15 @@ public class CalcController {
 
     @ResponseBody
     @PostMapping("/calc")
-    public String calculate(@RequestBody String n, HttpServletResponse response) {
+    public String calculate(@RequestBody String n, HttpServletResponse response, HttpServletRequest req) {
+
 
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
+        if (response.getStatus() == 400) {
+            return "redirect:/error/";
+
+        }
         return calc.calculate(n);
     }
 }

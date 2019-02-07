@@ -25,6 +25,7 @@ html, body {margin: 0; height: 100%; overflow: hidden}
     color: white;
     font-family: Calibri;
     word-wrap: break-word;
+    width: 500px;
 
 
 }

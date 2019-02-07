@@ -15,6 +15,9 @@ html, body {margin: 0; height: 100%; overflow: hidden}
     margin-top: 10%;
     margin-left: 40%;
     border: solid 5px black;
+
+
+    word-wrap: break-word;
     border-bottom: none;
 
 }
@@ -22,6 +25,7 @@ html, body {margin: 0; height: 100%; overflow: hidden}
     font-size: 20px;
     color: white;
     font-family: Calibri;
+
 }
 #welcome{
     color: white;
